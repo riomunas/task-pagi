@@ -15,13 +15,21 @@ class ProductController extends Controller  {
 		$this->service = $service;
 	}
 
-	public function getAll() {
-    	$products = $this->service->getAll();
-    	return response()->json($products);
+	public function index() {
+    	return $this->service->getAll();
     }
 
     public function store(Request $request) {
-    	$this->service->save($request->all());
-        return response()->json(['message' => 'Successfull create new product']);
+    	return $this->service->save($request->all());
+    }
+
+    public function show($id) {
+    	return $this->service->getById($id);
+    }
+    public function update(Request $request, $id) {
+    	return $this->service->update($request->all(), $id);
+    }
+    public function delete($id) {
+    	return $this->service->delete($id);
     }
 }
