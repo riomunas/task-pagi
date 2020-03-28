@@ -18,4 +18,7 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
 	//product route     
 	$router->post('login','AuthController@authenticate');
+	
+	$router->post('products', 'ProductController@store');
+	$router->get('products/get-all', 'ProductController@getAll');
 });
